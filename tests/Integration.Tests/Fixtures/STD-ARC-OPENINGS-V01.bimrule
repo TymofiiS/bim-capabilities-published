@@ -1,0 +1,86 @@
+{
+  "metadata": {
+    "ruleId": "STD-ARC-OPENINGS-V01",
+    "name": "STD-ARC-OPENINGS-V01",
+    "ruleVersion": "V01",
+    "contractVersion": "1.0",
+    "description": "Door and window family acceptance standard for openings.",
+    "domain": "Openings",
+    "status": "Approved",
+    "author": "Demo",
+    "createdAt": "2026-01-15T00:00:00+00:00"
+  },
+  "externalReferences": [
+    {
+      "referenceType": "SharedParameterFile",
+      "location": "examples/shared/CompanySharedParameters.txt",
+      "purpose": "Resolve required shared parameters for door and window validation.",
+      "isRequired": true,
+      "consumerEngine": "parameter-engine"
+    }
+  ],
+  "engines": [
+    {
+      "engineId": "family-engine",
+      "order": 1,
+      "capabilities": [
+        {
+          "atomId": "family.imported-cad",
+          "configuration": {
+            "excludeImportedCad.categories": "Doors,Windows"
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "parameter-engine",
+      "order": 2,
+      "capabilities": [
+        {
+          "atomId": "parameter.existence",
+          "configuration": {
+            "Doors.parameters": "RoomName,FireRating",
+            "Windows.parameters": "RoomName,AcousticRating"
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "naming-engine",
+      "order": 3,
+      "capabilities": [
+        {
+          "atomId": "naming.prefix.validation",
+          "configuration": {
+            "Doors.prefix": "DR_",
+            "Windows.prefix": "WN_"
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "report-engine",
+      "order": 4,
+      "capabilities": [
+        { "atomId": "report.compliance" }
+      ]
+    }
+  ],
+  "execution": {
+    "targetPlatform": "Revit",
+    "executionMode": "Validation",
+    "validationEnabled": true,
+    "fixEnabled": false,
+    "dryRun": false,
+    "requireUserApprovalBeforeModification": false,
+    "failureBehavior": "StopOnFirstUnrecoverableFailure"
+  },
+  "report": {
+    "generateHtmlReport": true,
+    "generateJsonReport": true,
+    "includeEvidence": true,
+    "reportTitle": "Openings Compliance Report",
+    "complianceSummaryProfile": "Compliance",
+    "resultGrouping": "Engine"
+  }
+}

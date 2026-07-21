@@ -1,0 +1,47 @@
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)..\build\Revit.Version.props" Condition="Exists('$(MSBuildThisFileDirectory)..\build\Revit.Version.props')" />
+
+  <PropertyGroup>
+    <IsRevitReleaseProject Condition="'$(IsRevitReleaseProject)' == '' and (
+        '$(MSBuildProjectName)' == 'BIMCapabilities.Contracts' or
+        '$(MSBuildProjectName)' == 'BIMCapabilities.Runtime' or
+        '$(MSBuildProjectName)' == 'BIMCapabilities.Composition' or
+        '$(MSBuildProjectName)' == 'BIMCapabilities.Engines.Family' or
+        '$(MSBuildProjectName)' == 'BIMCapabilities.Engines.Parameter' or
+        '$(MSBuildProjectName)' == 'BIMCapabilities.Engines.Naming' or
+        '$(MSBuildProjectName)' == 'BIMCapabilities.Engines.Report' or
+        '$(MSBuildProjectName)' == 'BIMCapabilities.Adapters.Revit' or
+        '$(MSBuildProjectName)' == 'BIMCapabilities.Launchers.Revit'
+      )">true</IsRevitReleaseProject>
+    <UseRevitWindowsTargeting Condition="'$(UseRevitWindowsTargeting)' == '' and '$(MSBuildProjectName)' == 'BIMCapabilities.Launchers.Revit'">true</UseRevitWindowsTargeting>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(RevitDefineConstants)' != ''">
+    <DefineConstants>$(DefineConstants);$(RevitDefineConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="BIMCapabilities.Contracts.Diagnostics" />
+  </ItemGroup>
+
+  <!-- Core + Revit projects: single TFM selected by RevitYear (2024 = net48, else net8.0). -->
+  <PropertyGroup Condition="'$(IsRevitReleaseProject)' == 'true' and '$(RevitYear)' == '2024'">
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>12</LangVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsRevitReleaseProject)' == 'true' and '$(RevitYear)' != '2024' and '$(UseRevitWindowsTargeting)' == 'true'">
+    <TargetFramework>net8.0-windows</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsRevitReleaseProject)' == 'true' and '$(RevitYear)' != '2024' and '$(UseRevitWindowsTargeting)' != 'true'">
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsRevitReleaseProject)' == 'true' and '$(RevitYear)' == '2024'">
+    <PackageReference Include="Polyfill" Version="5.1.0" PrivateAssets="all" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\build\Net48GlobalUsings.cs" Link="Net48GlobalUsings.cs" />
+  </ItemGroup>
+</Project>

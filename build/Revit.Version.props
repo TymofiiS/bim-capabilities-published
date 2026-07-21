@@ -1,0 +1,34 @@
+<Project>
+  <PropertyGroup>
+    <RevitYear Condition="'$(RevitYear)' == '' and $(Configuration.Contains('Revit2024'))">2024</RevitYear>
+    <RevitYear Condition="'$(RevitYear)' == '' and $(Configuration.Contains('Revit2025'))">2025</RevitYear>
+    <RevitYear Condition="'$(RevitYear)' == '' and $(Configuration.Contains('Revit2026'))">2026</RevitYear>
+    <RevitYear Condition="'$(RevitYear)' == ''">2026</RevitYear>
+    <RevitApiPackageVersion Condition="'$(RevitApiPackageVersion)' == '' and '$(RevitYear)' == '2024'">2024.0.0</RevitApiPackageVersion>
+    <RevitApiPackageVersion Condition="'$(RevitApiPackageVersion)' == '' and '$(RevitYear)' == '2025'">2025.0.0</RevitApiPackageVersion>
+    <RevitApiPackageVersion Condition="'$(RevitApiPackageVersion)' == '' and '$(RevitYear)' == '2026'">2026.0.0</RevitApiPackageVersion>
+    <RevitApiPackageVersion Condition="'$(RevitApiPackageVersion)' == ''">2026.0.0</RevitApiPackageVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(RevitYear)' == '2024'">
+    <RevitDefineConstants>REVIT2024</RevitDefineConstants>
+    <RevitPublishFramework>net48</RevitPublishFramework>
+    <RevitLauncherPublishFramework>net48</RevitLauncherPublishFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(RevitYear)' == '2025'">
+    <RevitDefineConstants>REVIT2025</RevitDefineConstants>
+    <RevitPublishFramework>net8.0</RevitPublishFramework>
+    <RevitLauncherPublishFramework>net8.0-windows</RevitLauncherPublishFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(RevitYear)' == '2026'">
+    <RevitDefineConstants>REVIT2026</RevitDefineConstants>
+    <RevitPublishFramework>net8.0</RevitPublishFramework>
+    <RevitLauncherPublishFramework>net8.0-windows</RevitLauncherPublishFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+    <LangVersion>12</LangVersion>
+  </PropertyGroup>
+</Project>

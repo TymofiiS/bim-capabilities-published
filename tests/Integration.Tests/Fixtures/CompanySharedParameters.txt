@@ -1,0 +1,6 @@
+# Company shared parameter definitions
+# Format: Name|Guid|DataType|Group
+FireRating|f1a2b3c4-d5e6-7890-abcd-ef1234567890|TEXT|Data
+AcousticRating|a1b2c3d4-e5f6-7890-abcd-ef1234567891|TEXT|Data
+RoomName|b2c3d4e5-f6a7-8901-bcde-f12345678902|TEXT|Identity Data
+Manufacturer|c3d4e5f6-a7b8-9012-cdef-123456789013|TEXT|Data

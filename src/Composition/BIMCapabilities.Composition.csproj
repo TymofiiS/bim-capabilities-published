@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsRevitReleaseProject>true</IsRevitReleaseProject>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>BIMCapabilities.Composition</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="BIMCapabilities.Integration.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\BIMCapabilities.Contracts.csproj" />
+    <ProjectReference Include="..\Runtime\BIMCapabilities.Runtime.csproj" />
+    <ProjectReference Include="..\Engines\FamilyEngine\BIMCapabilities.Engines.Family.csproj" />
+    <ProjectReference Include="..\Engines\ParameterEngine\BIMCapabilities.Engines.Parameter.csproj" />
+    <ProjectReference Include="..\Engines\NamingEngine\BIMCapabilities.Engines.Naming.csproj" />
+    <ProjectReference Include="..\Engines\ReportEngine\BIMCapabilities.Engines.Report.csproj" />
+  </ItemGroup>
+
+</Project>

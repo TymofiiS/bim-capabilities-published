@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "ruleId": "STD-ARC-OPENINGS-V01",
+    "name": "STD-ARC-OPENINGS-V01",
+    "ruleVersion": "V01",
+    "contractVersion": "1.0",
+    "description": "Door and window family acceptance standard.",
+    "domain": "Openings",
+    "status": "Approved",
+    "author": "Demo",
+    "createdAt": "2026-01-15T00:00:00+00:00"
+  },
+  "engines": [
+    {
+      "engineId": "naming-engine",
+      "order": 1,
+      "capabilities": [
+        { "atomId": "naming.prefix.legacy" }
+      ]
+    }
+  ],
+  "execution": {
+    "targetPlatform": "Revit",
+    "executionMode": "Validation",
+    "validationEnabled": true,
+    "fixEnabled": false,
+    "dryRun": false,
+    "requireUserApprovalBeforeModification": false,
+    "failureBehavior": "StopOnFirstUnrecoverableFailure"
+  },
+  "report": {
+    "generateHtmlReport": true,
+    "generateJsonReport": true,
+    "includeEvidence": true,
+    "reportTitle": "Openings Compliance Report",
+    "complianceSummaryProfile": "Compliance",
+    "resultGrouping": "Engine"
+  }
+}

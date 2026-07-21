@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>BIMCapabilities.Launchers.Revit</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="System.IO" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="BIMCapabilities.Launchers.Revit.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Adapters\RevitAdapter\BIMCapabilities.Adapters.Revit.csproj" />
+    <ProjectReference Include="..\..\Composition\BIMCapabilities.Composition.csproj" />
+    <ProjectReference Include="..\..\Contracts\BIMCapabilities.Contracts.csproj" />
+    <ProjectReference Include="..\..\Engines\ReportEngine\BIMCapabilities.Engines.Report.csproj" />
+    <ProjectReference Include="..\..\Runtime\BIMCapabilities.Runtime.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(RevitYear)' == '2024'">
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2024.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(RevitYear)' != '2024'">
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitApiPackageVersion)" />
+  </ItemGroup>
+
+</Project>

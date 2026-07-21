@@ -1,0 +1,9 @@
+bin/
+obj/
+*.user
+*.suo
+*.tmp
+*.log
+
+# Release staging (built by tools/BuildReleasePackage)
+release/staging/
