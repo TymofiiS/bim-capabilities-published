@@ -5,7 +5,7 @@ BIMCapabilities turns your company BIM standards into executable validation rule
 ## For BIM Coordinators
 
 <!-- BEGIN GENERATED:coordinator-release -->
-1. [Download BIMCapabilities-1.0.7.zip](release/BIMCapabilities-1.0.7.zip)
+1. [Download BIMCapabilities-1.0.7.zip](https://github.com/TymofiiS/bim-capabilities-published/raw/main/release/BIMCapabilities-1.0.7.zip)
 <!-- END GENERATED:coordinator-release -->
 2. **Right-click** the ZIP → **Properties** → check **Unblock** → **Apply**.
 3. Extract the entire ZIP into **`%APPDATA%`** (overwrite existing files when updating).
